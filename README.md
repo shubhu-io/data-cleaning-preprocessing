@@ -1,29 +1,63 @@
-# Assignment 2 - Clean and Preprocess a Dataset using Pandas and NumPy
+<div align="center">
 
-## Objective
+# Clean and Preprocess a Dataset using Pandas and NumPy
 
-Use Pandas and NumPy in Python to clean and preprocess a real-world dataset
-(Netflix Movies & TV Shows), documenting every step.
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Pandas](https://img.shields.io/badge/Pandas-2.1%2B-orange)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Tests](https://img.shields.io/badge/Tests-17%20passing-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+**A reproducible data-cleaning and preprocessing pipeline for the Netflix Movies & TV
+Shows dataset — Assignment 2 of the AI/ML Internship.**
+
+[GitHub Repository](https://github.com/shubhu-io/data-cleaning-preprocessing)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Problem Statement](#problem-statement)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Dataset](#dataset)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [How to Run](#how-to-run)
+- [How to Run Tests](#how-to-run-tests)
+- [Results](#results)
+- [Limitations](#limitations)
+- [Future Improvements](#future-improvements)
+- [Author](#author)
+- [Assignment Requirement Coverage](#assignment-requirement-coverage)
+
+## Overview
+
+Raw public datasets are messy: they contain missing values, duplicates, wrong data types
+and inconsistent text. This project builds a **step-by-step, reproducible cleaning and
+preprocessing pipeline** using Pandas and NumPy that turns the raw Netflix titles CSV into
+an analysis- and ML-ready dataset, with a visual and numeric report at every step.
 
 ## Problem Statement
 
-Raw public datasets contain missing values, duplicates, wrong data types, and messy text
-columns. This project builds a reproducible cleaning/preprocessing pipeline that turns the
-raw Netflix titles dataset into an analysis- and ML-ready dataset, with visual and numeric
-insights at every step.
+Use Pandas and NumPy in Python to clean and preprocess a real-world dataset (Netflix
+Movies & TV Shows), documenting every step of the process.
 
 ## Features
 
-- Step 1: Load dataset with Pandas (CSV)
-- Step 2: Inspect missing values, duplicates, and data types
+- Step 1: Load the dataset with Pandas (CSV)
+- Step 2: Inspect missing values, duplicates and data types
 - Step 3: Handle missing values (drop fully-empty rows; fill `Unknown`/`Not available`)
 - Step 4: Remove duplicate records
-- Step 5: Convert data types (date parsing, duration `90 min` / `2 Seasons` -> numeric)
+- Step 5: Convert data types (date parsing; `90 min` / `2 Seasons` → numeric duration)
 - Step 6: NumPy numerical transformations (percentiles, std, mean-imputation, log feature)
-- Step 7: Pandas filtering, sorting, grouping
+- Step 7: Pandas filtering, sorting and grouping
 - Summary statistics (`describe`)
 - Bonus: null-value heatmap, correlation matrix, label encoding + one-hot ML-readiness
-- Full pipeline exposed both as a Python script and an executed Jupyter notebook
+- Full pipeline exposed as a Python script **and** an executed Jupyter notebook
 
 ## Technologies
 
@@ -42,13 +76,12 @@ insights at every step.
 ## Dataset Source
 
 - Kaggle: <https://www.kaggle.com/datasets/shivamb/netflix-shows>
-- This repository ships the same public file under `data/raw/netflix_titles.csv`
-  (TidyTuesday public mirror).
+- Public file bundled at `data/raw/netflix_titles.csv` (TidyTuesday public mirror).
 
 ## Project Structure
 
 ```
-03-data-cleaning-preprocessing/
+02-data-cleaning-preprocessing/
 ├── scripts/
 │   ├── run_cleaning.py        # End-to-end pipeline runner
 │   └── make_notebook.py       # Builds + executes the notebook
@@ -72,7 +105,7 @@ insights at every step.
 ## Installation
 
 ```bash
-cd 03-data-cleaning-preprocessing
+cd projects/02-data-cleaning-preprocessing
 python -m venv .venv
 # Windows:
 .venv\Scripts\activate
@@ -110,25 +143,24 @@ python -m pytest tests/ -v
 ## Results
 
 - Raw shape `(7787, 12)` cleaned to an ML-ready `(7787, 38)` frame.
-- Fully-empty rows and duplicate rows removed.
-- No missing values remain after cleaning.
-- Key insights (from the real data):
-  - United States (2555 titles) and India (923 titles) dominate the catalog.
+- Fully-empty rows and duplicate rows removed; no missing values remain.
+- Key insights (computed from the real data):
+  - United States (2,555 titles) and India (923 titles) dominate the catalog.
   - Median movie duration ≈ 88 minutes.
-  - Most titles added between 2018-2021.
+  - Most titles were added between 2018–2021.
 - Figures: `reports/figures/null_heatmap.png`, `reports/figures/correlation_matrix.png`.
 
 ## Limitations
 
-- `date_added` uses forward-fill for gaps; ~88 rows remain as `Not available`.
-- Country column can contain multiple countries; treated as a single label here.
-- Label encoding is order-arbitrary (suitable for tree models, not linear ones).
+- `date_added` uses forward-fill for gaps; ~88 rows remain `Not available`.
+- The country column can list multiple countries; treated as a single label here.
+- Label encoding is order-arbitrary (suited to tree models, not linear ones).
 
 ## Future Improvements
 
-- Split multi-country values into separate rows/columns.
-- Apply target-encoding or frequency-encoding instead of label encoding.
-- Add a dashboard page to interactively explore the cleaned data.
+- Split multi-country values into separate rows/columns
+- Apply target- or frequency-encoding instead of label encoding
+- Add a dashboard page to interactively explore the cleaned data
 
 ## Author
 
